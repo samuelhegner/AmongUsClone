@@ -25,17 +25,21 @@ public class MoveCharacter : MonoBehaviour, IDependencyFiller
     {
         movementForce = calculateMovementForce();
         rigidbody2D.velocity = movementForce;
-        isCharacterMoving(movementForce);
+        UpdateIsCharacterMoving(movementForce);
     }
 
-    private void isCharacterMoving(Vector2 movementForce)
+    private void UpdateIsCharacterMoving(Vector2 movementForce)
     {
         bool isCharacterMovingCurrentFrame = movementForce.magnitude > 0;
-        
-        if (isMoving != isCharacterMovingCurrentFrame) 
+        CheckIfMovingEventNeedsTriggering(isCharacterMovingCurrentFrame);
+    }
+
+    private void CheckIfMovingEventNeedsTriggering(bool isCharacterMovingCurrentFrame)
+    {
+        if (isMoving != isCharacterMovingCurrentFrame)
         {
             isMoving = isCharacterMovingCurrentFrame;
-            characterMovingEvent(isMoving);
+            characterMovingEvent?.Invoke(isMoving);
         }
     }
 
