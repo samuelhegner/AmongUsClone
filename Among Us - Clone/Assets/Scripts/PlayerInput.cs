@@ -9,7 +9,7 @@ public class PlayerInput : MonoBehaviour
 
     private Vector2 verticalHorizontalInputValue;
 
-    public Vector2 VerticalHorizontalInputValue { get => verticalHorizontalInputValue; set => verticalHorizontalInputValue = value; }
+    public Vector2 VerticalHorizontalInputValue { get => verticalHorizontalInputValue; }
 
     // Start is called before the first frame update
     void Awake()
@@ -17,7 +17,6 @@ public class PlayerInput : MonoBehaviour
         verticalHorizontalInput.performed += ctx => verticalHorizontalInputValue = ctx.ReadValue<Vector2>();
         verticalHorizontalInput.canceled += ctx => verticalHorizontalInputValue = Vector2.zero;
     }
- 
 
     private void OnEnable()
     {
