@@ -50,9 +50,9 @@ public class MoveCharacter : MonoBehaviour, IDependencyFiller
         return calculatedForce;
     }
 
-    private Vector2 multiplyDirectionBySpeed(Vector2 inputDirection)
+    private Vector2 multiplyDirectionBySpeed(Vector2 direction)
     {
-        Vector2 speedModifiedForce = inputDirection * movementSpeed;
+        Vector2 speedModifiedForce = direction * movementSpeed;
         return speedModifiedForce;
     }
 
